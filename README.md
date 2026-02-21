@@ -220,8 +220,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 ## 🙏 Acknowledgements
-
-- Project guided by **[Krish Naik](https://www.krishnaik.in/)** — AI Pro Projects
 - Built using **AWS Bedrock**, **LangChain**, and **Python**
 - Architecture reference: [Krish Naik Academy](https://www.krishnaik.in/project/air-india-rag-chatbot-development)
 
