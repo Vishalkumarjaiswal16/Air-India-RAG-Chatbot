@@ -111,15 +111,8 @@ This project builds an end-to-end intelligent chatbot for Air India using **Gene
 Air-India-RAG-Chatbot/
 ├── images/
 │   ├── system_architecture.png   # System architecture diagram
-│   └── architecture_flow.svg     # Architecture flow diagram (SVG)
-├── data/
+├── AirIndia/
 │   └── air_india_docs/           # Air India PDF knowledge base
-├── src/
-│   ├── ingestion.py              # Document loading and chunking
-│   ├── embeddings.py             # AWS Bedrock embedding generation
-│   ├── vector_store.py           # Vector DB creation and retrieval
-│   ├── rag_chain.py              # LangChain RAG pipeline
-│   └── chatbot.py                # Main chatbot logic
 ├── app.py                        # Streamlit chat interface
 ├── requirements.txt              # Python dependencies
 ├── .env.example                  # Environment variables template
