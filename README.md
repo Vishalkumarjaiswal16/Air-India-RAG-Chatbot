@@ -47,15 +47,13 @@ This project builds an end-to-end intelligent chatbot for Air India using **Gene
 
 ## 🏗️ System Architecture
 
-![System Architecture](images/system_architecture.png)
-
 > *High-level architecture overview of the Air India RAG Chatbot pipeline — from document ingestion and embedding creation to vector storage, retrieval, and LLM-powered response generation.*
 >
-> **Reference:** [Krish Naik Academy — Air India RAG Chatbot Development](https://www.krishnaik.in/project/air-india-rag-chatbot-development)
 
 ### 🔄 Architecture Flow
 
-![Architecture Flow](images/architecture_flow.png)
+![Architecture Flow](<img width="1662" height="623" alt="image" src="https://github.com/user-attachments/assets/3a6a7351-b945-4c05-8be7-397b2eafaa3c" />
+)
 
 ### Architecture Breakdown
 
