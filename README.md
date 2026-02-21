@@ -50,39 +50,12 @@ This project builds an end-to-end intelligent chatbot for Air India using **Gene
 ![System Architecture](images/system_architecture.png)
 
 > *High-level architecture overview of the Air India RAG Chatbot pipeline — from document ingestion and embedding creation to vector storage, retrieval, and LLM-powered response generation.*
-> 
+>
 > **Reference:** [Krish Naik Academy — Air India RAG Chatbot Development](https://www.krishnaik.in/project/air-india-rag-chatbot-development)
 
-### 📊 Architecture Flow (Mermaid Diagram)
+### 🔄 Architecture Flow
 
-```mermaid
-flowchart TD
-    subgraph INGESTION["📥 Document Ingestion Pipeline"]
-        A["📂 Air India PDF Documents\n(Flight Schedules, FAQs, Bookings)"] --> B["✂️ Text Chunking\n~15 sentences per chunk"]
-        B --> C["🔢 AWS Bedrock\nEmbedding Model\n(Amazon Titan Embeddings)"]
-        C --> D[("🗄️ Vector Store\nFAISS / Amazon OpenSearch")]
-    end
-
-    subgraph RETRIEVAL["🔍 Query & Retrieval Pipeline"]
-        E["👤 End User\nAir India Customer"] --> F["💬 User Query\n'What is my flight status?'"]
-        F --> G["🔢 AWS Bedrock\nQuery Embedding"]
-        G --> H["🔎 Similarity Search\nTop-K Relevant Chunks"]
-        D --> H
-        H --> I["📋 Context Assembly\nQuery + Retrieved Chunks"]
-        I --> J["🤖 AWS Bedrock LLM\nClaude / Amazon Titan"]
-        J --> K["💡 Generated Response\nAccurate & Grounded"]
-        K --> L["🖥️ Streamlit Chat UI"]
-    end
-
-    INGESTION --> RETRIEVAL
-
-    style INGESTION fill:#1a3a5c,stroke:#4a9eff,color:#fff
-    style RETRIEVAL fill:#1a3a1a,stroke:#4aff9e,color:#fff
-    style A fill:#2d4a6b,stroke:#4a9eff,color:#fff
-    style D fill:#4a2d6b,stroke:#9e4aff,color:#fff
-    style J fill:#6b2d2d,stroke:#ff4a4a,color:#fff
-    style L fill:#2d6b4a,stroke:#4aff9e,color:#fff
-```
+![Architecture Flow](images/architecture_flow.png)
 
 ### Architecture Breakdown
 
@@ -140,20 +113,21 @@ flowchart TD
 ```
 Air-India-RAG-Chatbot/
 ├── images/
-│   └── system_architecture.png      # System architecture diagram
+│   ├── system_architecture.png   # System architecture diagram
+│   └── architecture_flow.png     # Architecture flow diagram
 ├── data/
-│   └── air_india_docs/              # Air India PDF knowledge base
+│   └── air_india_docs/           # Air India PDF knowledge base
 ├── src/
-│   ├── ingestion.py                 # Document loading and chunking
-│   ├── embeddings.py                # AWS Bedrock embedding generation
-│   ├── vector_store.py              # Vector DB creation and retrieval
-│   ├── rag_chain.py                 # LangChain RAG pipeline
-│   └── chatbot.py                   # Main chatbot logic
-├── app.py                           # Streamlit chat interface
-├── requirements.txt                 # Python dependencies
-├── .env.example                     # Environment variables template
-├── .gitignore                       # Git ignore rules
-└── README.md                        # Project documentation
+│   ├── ingestion.py              # Document loading and chunking
+│   ├── embeddings.py             # AWS Bedrock embedding generation
+│   ├── vector_store.py           # Vector DB creation and retrieval
+│   ├── rag_chain.py              # LangChain RAG pipeline
+│   └── chatbot.py                # Main chatbot logic
+├── app.py                        # Streamlit chat interface
+├── requirements.txt              # Python dependencies
+├── .env.example                  # Environment variables template
+├── .gitignore                    # Git ignore rules
+└── README.md                     # Project documentation
 ```
 
 ---
@@ -170,49 +144,56 @@ Air-India-RAG-Chatbot/
 ### Installation
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Vishalkumarjaiswal16/Air-India-RAG-Chatbot.git
-   cd Air-India-RAG-Chatbot
-   ```
+
+```bash
+git clone https://github.com/Vishalkumarjaiswal16/Air-India-RAG-Chatbot.git
+cd Air-India-RAG-Chatbot
+```
 
 2. **Create a virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate        # On Windows: venv\Scripts\activate
-   ```
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
 3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+
+```bash
+pip install -r requirements.txt
+```
 
 ### Configuration
 
 1. **Copy the environment template**
-   ```bash
-   cp .env.example .env
-   ```
+
+```bash
+cp .env.example .env
+```
 
 2. **Fill in your AWS credentials in `.env`**
-   ```env
-   AWS_ACCESS_KEY_ID=your_access_key
-   AWS_SECRET_ACCESS_KEY=your_secret_key
-   AWS_DEFAULT_REGION=us-east-1
-   BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
-   BEDROCK_EMBEDDING_MODEL_ID=amazon.titan-embed-text-v1
-   ```
+
+```env
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+AWS_DEFAULT_REGION=us-east-1
+BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
+BEDROCK_EMBEDDING_MODEL_ID=amazon.titan-embed-text-v1
+```
 
 ### Running the App
 
 1. **Ingest documents into the vector store**
-   ```bash
-   python src/ingestion.py
-   ```
+
+```bash
+python src/ingestion.py
+```
 
 2. **Launch the Streamlit chatbot UI**
-   ```bash
-   streamlit run app.py
-   ```
+
+```bash
+streamlit run app.py
+```
 
 3. Open your browser at `http://localhost:8501`
 
@@ -222,22 +203,22 @@ Air-India-RAG-Chatbot/
 
 ```
 [User Query]
-     │
-     ▼
+      │
+      ▼
 [Embedding Model (AWS Bedrock Titan)]
-     │  Converts query to vector
-     ▼
+      │  Converts query to vector
+      ▼
 [Vector Store (FAISS)]
-     │  Retrieves top-K relevant document chunks
-     ▼
+      │  Retrieves top-K relevant document chunks
+      ▼
 [Prompt Construction]
-     │  Combines retrieved context + user query
-     ▼
+      │  Combines retrieved context + user query
+      ▼
 [LLM (AWS Bedrock - Claude / Titan)]
-     │  Generates grounded, context-aware response
-     ▼
+      │  Generates grounded, context-aware response
+      ▼
 [Chat Interface (Streamlit)]
-     │  Displays response to user
+      │  Displays response to user
 ```
 
 ---
@@ -280,4 +261,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-<p align="center">Made with ❤️ by <a href="https://github.com/Vishalkumarjaiswal16">Vishal Kumar Jaiswal</a></p>
+Made with ❤️ by [Vishal Kumar Jaiswal](https://github.com/Vishalkumarjaiswal16)
