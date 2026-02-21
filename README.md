@@ -50,19 +50,52 @@ This project builds an end-to-end intelligent chatbot for Air India using **Gene
 ![System Architecture](images/system_architecture.png)
 
 > *High-level architecture overview of the Air India RAG Chatbot pipeline — from document ingestion and embedding creation to vector storage, retrieval, and LLM-powered response generation.*
+> 
+> **Reference:** [Krish Naik Academy — Air India RAG Chatbot Development](https://www.krishnaik.in/project/air-india-rag-chatbot-development)
+
+### 📊 Architecture Flow (Mermaid Diagram)
+
+```mermaid
+flowchart TD
+    subgraph INGESTION["📥 Document Ingestion Pipeline"]
+        A["📂 Air India PDF Documents\n(Flight Schedules, FAQs, Bookings)"] --> B["✂️ Text Chunking\n~15 sentences per chunk"]
+        B --> C["🔢 AWS Bedrock\nEmbedding Model\n(Amazon Titan Embeddings)"]
+        C --> D[("🗄️ Vector Store\nFAISS / Amazon OpenSearch")]
+    end
+
+    subgraph RETRIEVAL["🔍 Query & Retrieval Pipeline"]
+        E["👤 End User\nAir India Customer"] --> F["💬 User Query\n'What is my flight status?'"]
+        F --> G["🔢 AWS Bedrock\nQuery Embedding"]
+        G --> H["🔎 Similarity Search\nTop-K Relevant Chunks"]
+        D --> H
+        H --> I["📋 Context Assembly\nQuery + Retrieved Chunks"]
+        I --> J["🤖 AWS Bedrock LLM\nClaude / Amazon Titan"]
+        J --> K["💡 Generated Response\nAccurate & Grounded"]
+        K --> L["🖥️ Streamlit Chat UI"]
+    end
+
+    INGESTION --> RETRIEVAL
+
+    style INGESTION fill:#1a3a5c,stroke:#4a9eff,color:#fff
+    style RETRIEVAL fill:#1a3a1a,stroke:#4aff9e,color:#fff
+    style A fill:#2d4a6b,stroke:#4a9eff,color:#fff
+    style D fill:#4a2d6b,stroke:#9e4aff,color:#fff
+    style J fill:#6b2d2d,stroke:#ff4a4a,color:#fff
+    style L fill:#2d6b4a,stroke:#4aff9e,color:#fff
+```
 
 ### Architecture Breakdown
 
-| Stage | Description |
-|-------|-------------|
-| **Document Ingestion** | Collection of Air India PDF documents (flight schedules, booking guides, FAQs) |
-| **Text Preprocessing** | Split documents into smaller, meaningful chunks (~15 sentences each) |
-| **Embedding Creation** | Use AWS Bedrock Embedding Models (e.g., Amazon Titan Embeddings) to convert chunks into vector representations |
-| **Vector Store** | Store embeddings in a FAISS / Amazon OpenSearch vector index for fast similarity lookup |
-| **User Query** | End user submits a natural language query via the chat interface |
-| **Retrieval** | Query is embedded and used to fetch top-K relevant chunks from the vector store |
-| **LLM Generation** | Retrieved context + query passed to AWS Bedrock LLM (e.g., Claude / Titan) to generate a grounded response |
-| **Chat Interface** | Optional Streamlit or web UI for interactive conversation |
+| Stage | Component | Description |
+|-------|-----------|-------------|
+| **1. Document Ingestion** | PDF Parser | Collection of Air India PDFs (flight schedules, booking guides, FAQs) |
+| **2. Text Preprocessing** | Text Splitter | Split documents into smaller, meaningful chunks (~15 sentences each) |
+| **3. Embedding Creation** | AWS Bedrock Titan | Convert chunks into high-dimensional vector representations |
+| **4. Vector Storage** | FAISS / OpenSearch | Store and index embeddings for fast similarity lookup |
+| **5. Query Processing** | Bedrock Embeddings | Convert user query into vector for similarity matching |
+| **6. Retrieval** | Vector Search | Fetch top-K most relevant document chunks |
+| **7. LLM Generation** | Claude / Titan LLM | Generate grounded, context-aware response using retrieved chunks |
+| **8. UI Interface** | Streamlit | Interactive chat interface for Air India customers |
 
 ---
 
