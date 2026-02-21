@@ -189,30 +189,6 @@ streamlit run app.py
 
 ---
 
-## ⚙️ How It Works
-
-```
-[User Query]
-      │
-      ▼
-[Embedding Model (AWS Bedrock Titan)]
-      │  Converts query to vector
-      ▼
-[Vector Store (FAISS)]
-      │  Retrieves top-K relevant document chunks
-      ▼
-[Prompt Construction]
-      │  Combines retrieved context + user query
-      ▼
-[LLM (AWS Bedrock - Claude / Titan)]
-      │  Generates grounded, context-aware response
-      ▼
-[Chat Interface (Streamlit)]
-      │  Displays response to user
-```
-
----
-
 ## ✨ Key Features
 
 - 🔍 **Semantic Search** — Finds the most relevant Air India documents using vector similarity
