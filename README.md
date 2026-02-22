@@ -25,7 +25,6 @@
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Running the App](#running-the-app)
-- [How It Works](#how-it-works)
 - [Key Features](#key-features)
 - [Contributing](#contributing)
 - [License](#license)
