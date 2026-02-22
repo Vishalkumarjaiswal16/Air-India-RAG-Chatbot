@@ -214,7 +214,7 @@ Contributions are welcome! Please follow these steps:
 
 ## 🙏 Acknowledgements
 - Built using **AWS Bedrock**, **LangChain**, and **Python**
-- Architecture reference: [Krish Naik Academy](https://www.krishnaik.in/project/air-india-rag-chatbot-development)
+- Architecture reference: (https://github.com/krishnaik06)
 
 ---
 
