@@ -212,12 +212,6 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
 ## 🙏 Acknowledgements
 - Built using **AWS Bedrock**, **LangChain**, and **Python**
 - Architecture reference: [Krish Naik Academy](https://www.krishnaik.in/project/air-india-rag-chatbot-development)
