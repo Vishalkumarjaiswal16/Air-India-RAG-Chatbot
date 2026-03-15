@@ -114,6 +114,7 @@ def get_response(question):
     result = json.loads(response["body"].read())
     # print(result)
     return result
-    
-ans = get_response("What is the current status of Air India?")
-print(ans['output']['message']['content'][0]['text'])
+
+if __name__ == "__main__":
+    ans = get_response("What is the current status of Air India?")
+    print(ans['output']['message']['content'][0]['text'])

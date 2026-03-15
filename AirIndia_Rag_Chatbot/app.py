@@ -6,7 +6,7 @@ st.set_page_config(page_title="Air India Assistant", layout="wide")
 st.title("✈️ Air India Chat Assistant")
 st.markdown("Ask any question about Air India based on the provided documents.")
 
-st# Input field
+# Input field
 question = st.text_input("Enter your question:")
 
 # When the user submits a question
