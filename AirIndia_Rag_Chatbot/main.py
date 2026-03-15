@@ -7,6 +7,7 @@ import tiktoken
 from langchain_chroma import Chroma
 from uuid import uuid4
 
+
 # Uncomment for first time to load the documents and create a vector store
 # loader = PyPDFDirectoryLoader("AirIndia", glob="**/*.pdf",)
 # documents = loader.load()
@@ -65,25 +66,32 @@ vector_store = Chroma(
 
 client = boto3.client("bedrock-runtime", region_name="eu-west-3")
 MODEL_ID = "eu.amazon.nova-pro-v1:0"
+def _format_chat_history(chat_history):
+    if not chat_history:
+        return "No prior conversation."
+
+    formatted_messages = []
+    for message in chat_history[-6:]:
+        role = message.get("role", "user").capitalize()
+        content = message.get("content", "")
+        formatted_messages.append(f"{role}: {content}")
+
+    return "\n".join(formatted_messages)
 
 
-prompt= """
-You are a helpful assistant. Use the following context to answer the user's question.
-The context is a collection of documents that may contain relevant information about Air India, its operations, policies, and other related topics.
-Context:
-{context}
+def get_response(question, chat_history=None):
+    docs_from_vector_store = vector_store.similarity_search(question, k=3)
+    conversation_history = _format_chat_history(chat_history)
 
-User's Question:
-{question}
-"""
+    prompt = f"""
+    You are a helpful assistant for Air India questions.
+    Answer only from the retrieved context and the ongoing conversation.
+    If the user asks a follow-up question, use the chat history to resolve references like "it", "that", "this flight", or "tell me more".
+    If the answer is not supported by the context, say that clearly.
 
-def get_response(question):
-    
-    docs_from_vector_store = vector_store.similarity_search(question,k=3)
-    
-    prompt= f"""
-    You are a helpful assistant. Use the following context to answer the user's question.
-    The context is a collection of documents that may contain relevant information about Air India, its operations, policies, and other related topics.
+    Chat History:
+    {conversation_history}
+
     Context:
     {docs_from_vector_store}
 
