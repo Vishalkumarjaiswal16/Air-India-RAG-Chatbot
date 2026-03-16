@@ -33,10 +33,10 @@
 
 ## 🧾 Overview
 
-This project builds an end-to-end intelligent chatbot for Air India using **Generative AI** and the **RAG (Retrieval-Augmented Generation)** paradigm. The chatbot:
+An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, and Python. Provides real-time support for flight schedules, bookings, and airline services using Retrieval-Augmented Generation.
 
 - Ingests and processes Air India-related PDF documents
-- Generates vector embeddings using AWS Bedrock's embedding models
+- Generates vector embeddings using AWS Bedrock's Titan Text Embeddings V2 model
 - Stores embeddings in a vector database for efficient similarity search
 - Retrieves relevant document chunks based on user queries
 - Generates accurate, context-grounded answers using a Large Language Model (LLM)
