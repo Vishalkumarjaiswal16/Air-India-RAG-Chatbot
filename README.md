@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License">
 </p>
 
-> An AI-powered **Retrieval-Augmented Generation (RAG)** chatbot tailored for Air India, leveraging **AWS Bedrock APIs** for natural language processing. The chatbot provides real-time customer support by answering queries about flight schedules, bookings, and airline services using a knowledge base of Air India-related documents.
+> An **Retrieval-Augmented Generation (RAG)** chatbot tailored for Air India, leveraging **AWS Bedrock APIs** for natural language processing. The chatbot provides real-time customer support by answering queries about company and airline services using a knowledge base of Air India-related given documents.
 
 ---
 
