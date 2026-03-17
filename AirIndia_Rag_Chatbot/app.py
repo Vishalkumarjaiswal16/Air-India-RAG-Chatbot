@@ -34,3 +34,4 @@ if question:
                 st.session_state.messages.append({"role": "assistant", "content": answer})
             except Exception as e:
                 st.error(f"An error occurred: {e}")
+

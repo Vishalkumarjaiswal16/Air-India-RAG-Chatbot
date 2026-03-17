@@ -22,7 +22,7 @@ class AmazonTitanEmbedding(Embeddings):
     def __init__(self, region_name="eu-west-3", model_id="amazon.titan-embed-text-v2:0"):
         self.client = boto3.client("bedrock-runtime", region_name=region_name)
         self.model_id = model_id
-        self.max_tokens = 8000
+        self.max_tokens = 18000
         self.tokenizer = tiktoken.get_encoding("cl100k_base")
 
     def _safe_truncate(self, text: str) -> str:
