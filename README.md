@@ -60,7 +60,7 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 | **1. Document Ingestion** | PDF Parser | Collection of Air India PDFs (flight schedules, booking guides, FAQs) |
 | **2. Text Preprocessing** | Text Splitter | Split documents into smaller, meaningful chunks (~15 sentences each) |
 | **3. Embedding Creation** | AWS Bedrock Titan | Convert chunks into high-dimensional vector representations |
-| **4. Vector Storage** | FAISS / OpenSearch | Store and index embeddings for fast similarity lookup |
+| **4. Vector Storage** |Chroma db | Store and index embeddings for fast similarity lookup |
 | **5. Query Processing** | Bedrock Embeddings | Convert user query into vector for similarity matching |
 | **6. Retrieval** | Vector Search | Fetch top-K most relevant document chunks |
 | **7. LLM Generation** | Claude / Titan LLM | Generate grounded, context-aware response using retrieved chunks |
@@ -94,9 +94,10 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 | Technology | Purpose |
 |-----------|----------|
 | **Python 3.10+** | Core programming language |
-| **AWS Bedrock** | Foundation LLM & Embeddings (Claude, Amazon Titan) |
+| **LangChain** | RAG pipeline orchestration | 
+| **AWS Bedrock** | Foundation LLM & Embeddings (Nova Pro, Titan text embedding V2) |
 | **LangChain** | RAG pipeline orchestration |
-| **FAISS / Amazon OpenSearch** | Vector database for similarity search |
+| **CHROMA** | Vector database for similarity search |
 | **Boto3** | AWS SDK for Python |
 | **PyPDF2 / pdfplumber** | PDF document parsing |
 | **Streamlit** | Chat user interface |
