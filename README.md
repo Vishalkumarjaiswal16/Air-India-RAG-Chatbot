@@ -33,13 +33,13 @@
 
 ## 🧾 Overview
 
-An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, and Python. Provides real-time support for flight schedules, bookings, and airline services using Retrieval-Augmented Generation.
+An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, and Python. Provides real-time support for airline services using Retrieval-Augmented Generation.
 
 - Ingests and processes Air India-related PDF documents
 - Generates vector embeddings using AWS Bedrock's Titan Text Embeddings V2 model
 - Stores embeddings in a vector database for efficient similarity search
 - Retrieves relevant document chunks based on user queries
-- Generates accurate, context-grounded answers using a Large Language Model (LLM)
+- Generates accurate, context-grounded answers using Nova Pro model
 - Provides a user-friendly chat interface for real-time support
 
 ---
@@ -57,13 +57,13 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 
 | Stage | Component | Description |
 |-------|-----------|-------------|
-| **1. Document Ingestion** | PDF Parser | Collection of Air India PDFs (flight schedules, booking guides, FAQs) |
+| **1. Document Ingestion** | PDF Parser | Collection of Air India PDFs |
 | **2. Text Preprocessing** | Text Splitter | Split documents into smaller, meaningful chunks (~15 sentences each) |
-| **3. Embedding Creation** | AWS Bedrock Titan | Convert chunks into high-dimensional vector representations |
-| **4. Vector Storage** |Chroma db | Store and index embeddings for fast similarity lookup |
+| **3. Embedding Creation** | AWS Bedrock Titan text embedding V2 | Convert chunks into high-dimensional vector representations |
+| **4. Vector Storage** |Chroma DB | Store and index embeddings for fast similarity lookup |
 | **5. Query Processing** | Bedrock Embeddings | Convert user query into vector for similarity matching |
 | **6. Retrieval** | Vector Search | Fetch top-K most relevant document chunks |
-| **7. LLM Generation** | Claude / Titan LLM | Generate grounded, context-aware response using retrieved chunks |
+| **7. LLM Generation** | Nova Pro | Generate grounded, context-aware response using retrieved chunks |
 | **8. UI Interface** | Streamlit | Interactive chat interface for Air India customers |
 
 ---
@@ -75,14 +75,11 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 - ✅ Building a real-time chatbot for **customer support** using AI
 - ✅ Integrating a chatbot with an existing **knowledge base**
 - ✅ Understanding the architecture of **cloud-based AI solutions**
-- ✅ Applying **machine learning concepts** to improve chatbot performance
-- ✅ **Fine-tuning LLMs** for domain-specific applications
-
 ---
 
 ## 🛠️ What You'll Build
 
-- A functional **Air India chatbot prototype**
+- A functional **Air India Chat Assistant**
 - An **information retrieval system** connected to the chatbot
 - An **AI model integrated with AWS Bedrock**
 - A **user interface** for interacting with the chatbot
