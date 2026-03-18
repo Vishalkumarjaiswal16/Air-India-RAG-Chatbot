@@ -71,7 +71,6 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 - ✅ Mastering the use of **AWS Bedrock** for NLP tasks
 - ✅ Implementing **Retrieval-Augmented Generation (RAG)** to enhance chatbot responses
 - ✅ Building a real-time chatbot for **customer support** using AI
-- ✅ Integrating a chatbot with an existing **knowledge base**
 - ✅ Understanding the architecture of **cloud-based AI solutions**
 ---
 
