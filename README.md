@@ -54,6 +54,35 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 
 ### 🔄 Architecture Flow
 
+```
+Air India PDF Documents
+     │
+     v
+[📄 PDF Ingestion]  (PyPDFLoader)
+     │
+     v
+[📋 Document Parsing]  (Extract text from PDFs)
+     │
+     v
+[✂️ Text Chunking]  (RecursiveCharacterTextSplitter | ~15 sentences each)
+     │
+     v
+[🧠 Vector Embedding]  (AWS Bedrock Titan Text Embeddings V2)
+     │
+     v
+[🗄️ Chroma Vector Store]  (Persistent vector database)
+     │
+     v
+[🔍 User Query] → [Bedrock Embeddings] → [Top-K Chunks]
+     │
+     v
+[🤖 LLM Generation]  (AWS Bedrock Nova Pro)
+     │
+     v
+[✅ Grounded Answer] → [Streamlit UI]
+```
+
+
 ### Architecture Breakdown
 
 | Stage | Component | Description |
