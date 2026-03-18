@@ -10,6 +10,10 @@
 
 > An **Retrieval-Augmented Generation (RAG)** chatbot tailored for Air India, leveraging **AWS Bedrock APIs** for natural language processing. The chatbot provides real-time customer support by answering queries about company and airline services using a knowledge base of Air India-related given documents.
 
+<p align="center">
+  <img src="images/Air_India.JPG" alt="Air India RAG Chatbot" width="700"/>
+</p>
+
 ---
 
 ## 📋 Table of Contents
@@ -47,7 +51,8 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 ## 🏗️ System Architecture
 
 > *High-level architecture overview of the Air India RAG Chatbot pipeline — from document ingestion and embedding creation to vector storage, retrieval, and LLM-powered response generation.*
->
+
+### 🔄 Architecture Flow
 
 ### Architecture Breakdown
 
@@ -56,20 +61,24 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 | **1. Document Ingestion** | PDF Parser | Collection of Air India PDFs |
 | **2. Text Preprocessing** | RecursiveCharacterTextSplitter | Split documents into smaller, meaningful chunks (~15 sentences each) |
 | **3. Embedding Creation** | AWS Bedrock Titan text embedding V2 | Convert chunks into high-dimensional vector representations |
-| **4. Vector Storage** |Chroma DB | Store and index embeddings for fast similarity lookup |
+| **4. Vector Storage** | Chroma DB | Store and index embeddings for fast similarity lookup |
 | **5. Query Processing** | Bedrock Embeddings | Convert user query into vector for similarity matching |
 | **6. Retrieval** | Vector Search | Fetch top-K most relevant document chunks |
 | **7. LLM Generation** | Nova Pro | Generate grounded, context-aware response using retrieved chunks |
 | **8. UI Interface** | Streamlit | Interactive chat interface for Air India customers |
 
----  
+---
 
 ## 🎓 What You Will Learn
 
 - ✅ Mastering the use of **AWS Bedrock** for NLP tasks
 - ✅ Implementing **Retrieval-Augmented Generation (RAG)** to enhance chatbot responses
 - ✅ Building a real-time chatbot for **customer support** using AI
+- ✅ Integrating a chatbot with an existing **knowledge base**
 - ✅ Understanding the architecture of **cloud-based AI solutions**
+- ✅ Working with **Chroma DB** as a vector store for document retrieval
+- ✅ Building a **PDF ingestion pipeline** with LangChain document loaders
+
 ---
 
 ## 🛠️ What You'll Build
@@ -86,10 +95,9 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 | Technology | Purpose |
 |-----------|----------|
 | **Python 3.10+** | Core programming language |
-| **LangChain** | RAG pipeline orchestration | 
-| **AWS Bedrock** | Foundation LLM & Embeddings (Nova Pro & Titan text embedding V2) |
 | **LangChain** | RAG pipeline orchestration |
-| **CHROMA DB** | Vector database for similarity search |
+| **AWS Bedrock** | Foundation LLM & Embeddings (Nova Pro & Titan text embedding V2) |
+| **Chroma DB** | Vector database for similarity search |
 | **Boto3** | AWS SDK for Python |
 | **PyPDFLoader** | PDF document parsing |
 | **Streamlit** | Chat user interface |
@@ -102,26 +110,27 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 ```
 Air-India-RAG-Chatbot/
 ├── AirIndia_Rag_Chatbot/
-│   ├── AirIndia/                              # Air India PDF knowledge base
+│   ├── AirIndia/                  # Air India PDF knowledge base
 │   │   ├── Aiesl Employees service regulation.pdf
 │   │   ├── Air India Fact Sheet.pdf
 │   │   ├── Domestic Routes Feb 2025.pdf
 │   │   ├── International Routes Feb 2025.pdf
 │   │   └── List of Major Air India Disasters.pdf
-│   ├── chroma_vectorestore/                   # Chroma vector store (auto-generated)
-│   │   ├── 5b2c7491-.../                      # Vector index data
-│   │   └── chroma.sqlite3                     # SQLite metadata store
-│   ├── images/                                # App images/assets
+│   ├── chroma_vectorestore/       # Chroma vector store (auto-generated)
+│   │   ├── 5b2c7491-.../            # Vector index data
+│   │   └── chroma.sqlite3           # SQLite metadata store
+│   ├── images/                    # App images/assets
 │   ├── .gitignore
-│   ├── app.py                                 # Streamlit chat interface
-│   ├── main.py                                # Entry point / RAG pipeline
-│   └── test.py                                # Unit tests
-├── images/                                    # System architecture diagrams
-│   └── system_architecture.png
-├── .gitignore                                 # Git ignore rules
-├── pyproject.toml                             # Project metadata & dependencies
-├── uv.lock                                    # Lockfile for uv package manager
-└── README.md                                  # Project documentation
+│   ├── app.py                     # Streamlit chat interface
+│   ├── main.py                    # Entry point / RAG pipeline & document ingestion
+│   └── test.py                    # Unit tests
+├── images/                        # Project images
+│   └── Air_India.JPG
+├── .gitignore                     # Git ignore rules
+├── LICENSE                        # MIT License
+├── pyproject.toml                 # Project metadata & dependencies
+├── uv.lock                        # Lockfile for uv package manager
+└── README.md                      # Project documentation
 ```
 
 ---
@@ -138,21 +147,18 @@ Air-India-RAG-Chatbot/
 ### Installation
 
 1. **Clone the repository**
-
 ```bash
 git clone https://github.com/Vishalkumarjaiswal16/Air-India-RAG-Chatbot.git
 cd Air-India-RAG-Chatbot
 ```
 
 2. **Create a virtual environment**
-
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 3. **Install dependencies**
-
 ```bash
 pip install -r requirements.txt
 ```
@@ -160,13 +166,11 @@ pip install -r requirements.txt
 ### Configuration
 
 1. **Copy the environment template**
-
 ```bash
 cp .env.example .env
 ```
 
 2. **Fill in your AWS credentials in `.env`**
-
 ```env
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
@@ -176,15 +180,13 @@ AWS_DEFAULT_REGION=us-east-1
 ### Running the App
 
 1. **Ingest documents into the vector store**
-
 ```bash
-python src/ingestion.py
+python AirIndia_Rag_Chatbot/main.py
 ```
 
 2. **Launch the Streamlit chatbot UI**
-
 ```bash
-streamlit run app.py
+streamlit run AirIndia_Rag_Chatbot/app.py
 ```
 
 3. Open your browser at `http://localhost:8501`
@@ -215,9 +217,16 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+---
+
 ## 🙏 Acknowledgements
+
 - Built using **AWS Bedrock**, **LangChain**, and **Python**
-- Architecture reference: (https://github.com/krishnaik06)
+- Architecture reference: [krishnaik06](https://github.com/krishnaik06)
 
 ---
 
