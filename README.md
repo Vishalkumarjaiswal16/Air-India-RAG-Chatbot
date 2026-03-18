@@ -51,8 +51,6 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 
 ### 🔄 Architecture Flow
 
-![Architecture Flow](images/architecture_flow.svg)
-
 ### Architecture Breakdown
 
 | Stage | Component | Description |
