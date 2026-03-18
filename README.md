@@ -58,7 +58,7 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 | Stage | Component | Description |
 |-------|-----------|-------------|
 | **1. Document Ingestion** | PDF Parser | Collection of Air India PDFs |
-| **2. Text Preprocessing** | Text Splitter | Split documents into smaller, meaningful chunks (~15 sentences each) |
+| **2. Text Preprocessing** | RecursiveCharacterTextSplitter | Split documents into smaller, meaningful chunks (~15 sentences each) |
 | **3. Embedding Creation** | AWS Bedrock Titan text embedding V2 | Convert chunks into high-dimensional vector representations |
 | **4. Vector Storage** |Chroma DB | Store and index embeddings for fast similarity lookup |
 | **5. Query Processing** | Bedrock Embeddings | Convert user query into vector for similarity matching |
@@ -66,7 +66,7 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 | **7. LLM Generation** | Nova Pro | Generate grounded, context-aware response using retrieved chunks |
 | **8. UI Interface** | Streamlit | Interactive chat interface for Air India customers |
 
----
+---  
 
 ## 🎓 What You Will Learn
 
