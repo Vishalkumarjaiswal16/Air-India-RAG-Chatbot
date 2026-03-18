@@ -106,15 +106,27 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 
 ```
 Air-India-RAG-Chatbot/
-├── images/
-│   ├── system_architecture.png   # System architecture diagram
-├── AirIndia/
-│   └── air_india_docs/           # Air India PDF knowledge base
-├── app.py                        # Streamlit chat interface
-├── requirements.txt              # Python dependencies
-├── .env.example                  # Environment variables template
-├── .gitignore                    # Git ignore rules
-└── README.md                     # Project documentation
+├── AirIndia_Rag_Chatbot/
+│   ├── AirIndia/                              # Air India PDF knowledge base
+│   │   ├── Aiesl Employees service regulation.pdf
+│   │   ├── Air India Fact Sheet.pdf
+│   │   ├── Domestic Routes Feb 2025.pdf
+│   │   ├── International Routes Feb 2025.pdf
+│   │   └── List of Major Air India Disasters.pdf
+│   ├── chroma_vectorestore/                   # Chroma vector store (auto-generated)
+│   │   ├── 5b2c7491-.../                      # Vector index data
+│   │   └── chroma.sqlite3                     # SQLite metadata store
+│   ├── images/                                # App images/assets
+│   ├── .gitignore
+│   ├── app.py                                 # Streamlit chat interface
+│   ├── main.py                                # Entry point / RAG pipeline
+│   └── test.py                                # Unit tests
+├── images/                                    # System architecture diagrams
+│   └── system_architecture.png
+├── .gitignore                                 # Git ignore rules
+├── pyproject.toml                             # Project metadata & dependencies
+├── uv.lock                                    # Lockfile for uv package manager
+└── README.md                                  # Project documentation
 ```
 
 ---
