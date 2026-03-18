@@ -94,9 +94,9 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 | **LangChain** | RAG pipeline orchestration | 
 | **AWS Bedrock** | Foundation LLM & Embeddings (Nova Pro & Titan text embedding V2) |
 | **LangChain** | RAG pipeline orchestration |
-| **CHROMA** | Vector database for similarity search |
+| **CHROMA DB** | Vector database for similarity search |
 | **Boto3** | AWS SDK for Python |
-| **PyPDF2 / pdfplumber** | PDF document parsing |
+| **PyPDFLoader** | PDF document parsing |
 | **Streamlit** | Chat user interface |
 | **dotenv** | Environment variable management |
 
