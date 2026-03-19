@@ -252,11 +252,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ---
 
-## 🙏 Acknowledgements
-
-- Built using **AWS Bedrock**, **LangChain**, and **Python**
-- Architecture reference: [krishnaik06](https://github.com/krishnaik06)
-
----
-
 Made with ❤️ by [Vishal Kumar Jaiswal](https://github.com/Vishalkumarjaiswal16)
