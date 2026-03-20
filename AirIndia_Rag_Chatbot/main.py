@@ -17,13 +17,12 @@ from uuid import uuid4
 # texts = text_splitter.split_documents(documents)
 # print(len(texts))
 
-
 class AmazonTitanEmbedding(Embeddings):
     def __init__(self, region_name="eu-west-3", model_id="amazon.titan-embed-text-v2:0"):
         self.client = boto3.client("bedrock-runtime", region_name=region_name)
         self.model_id = model_id
         self.max_tokens = 18000
-        self.tokenizer = tiktoken.get_encoding("cl100k_base")
+        self.tokenizer = tiktoken.get_encoding("cl100k_base") # This is the tokenizer used by Amazon Titan models. 
 
     def _safe_truncate(self, text: str) -> str:
         tokens = self.tokenizer.encode(text)
