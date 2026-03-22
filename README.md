@@ -84,12 +84,12 @@ Air India PDF Documents
 
 | Stage | Component | Description |
 |-------|-----------|-------------|
-| **1. Document Ingestion** | PDF Parser | Collection of Air India PDFs |
+| **1. Document Ingestion** | PyPDFLoader | Collection of Air India PDFs |
 | **2. Text Preprocessing** | RecursiveCharacterTextSplitter | Split documents into smaller, meaningful chunks (~15 sentences each) |
-| **3. Embedding Creation** | AWS Bedrock Titan text embedding V2 | Convert chunks into high-dimensional vector representations |
+| **3. Embedding Creation** | AWS Bedrock Titan text embedding V2 | Convert chunks into vector representations |
 | **4. Vector Storage** | Chroma DB | Store and index embeddings for fast similarity lookup |
 | **5. Query Processing** | Bedrock Embeddings | Convert user query into vector for similarity matching |
-| **6. Retrieval** | Vector Search | Fetch top-K most relevant document chunks |
+| **6. Retrieval** | Vector Search | Fetch top-K most relevant chunks |
 | **7. LLM Generation** | Nova Pro | Generate grounded, context-aware response using retrieved chunks |
 | **8. UI Interface** | Streamlit | Interactive chat interface for Air India customers |
 
