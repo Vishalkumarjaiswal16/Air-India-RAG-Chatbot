@@ -61,9 +61,6 @@ Air India PDF Documents
 [📄 PDF Ingestion]  (PyPDFLoader)
      │
      v
-[📋 Document Parsing]  (Extract text from PDFs)
-     │
-     v
 [✂️ Text Chunking]  (RecursiveCharacterTextSplitter | ~15 sentences each)
      │
      v
