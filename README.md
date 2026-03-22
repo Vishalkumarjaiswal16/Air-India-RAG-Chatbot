@@ -32,6 +32,7 @@
 - [Key Features](#key-features)
 - [Contributing](#contributing)
 - [License](#license)
+- [Acknowledgements](#acknowledgements)
 
 ---
 
@@ -247,5 +248,15 @@ Contributions are welcome! Please follow these steps:
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
+
+## 🙏 Acknowledgements
+
+Special thanks to:
+
+- **AWS Bedrock** for providing state-of-the-art foundation models
+- **LangChain** for the powerful RAG framework
+- **Streamlit** for the intuitive UI framework
+- **Air India** for inspiring this project
+
 
 Made with ❤️ by [Vishal Kumar](https://github.com/Vishalkumarjaiswal16)
