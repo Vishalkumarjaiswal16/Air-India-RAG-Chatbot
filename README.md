@@ -126,7 +126,6 @@ Air India PDF Documents
 | **Chroma DB** | Vector database for similarity search |
 | **Boto3** | AWS SDK for Python |
 | **Streamlit** | Chat user interface |
-| **dotenv** | Environment variable management |
 
 
 ## 📁 Project Structure
