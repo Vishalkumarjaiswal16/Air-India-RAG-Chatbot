@@ -58,7 +58,7 @@ An AI-powered **RAG chatbot** for Air India built with AWS Bedrock, LangChain, a
 Air India PDF Documents
      │
      v
-[📄 PDF Ingestion]  (PyPDFLoader)
+[📄 PDF Ingestion]  (PyPDFDirectoryLoader)
      │
      v
 [✂️ Text Chunking]  (RecursiveCharacterTextSplitter | ~15 sentences each)
@@ -84,7 +84,7 @@ Air India PDF Documents
 
 | Stage | Component | Description |
 |-------|-----------|-------------|
-| **1. Document Ingestion** | PyPDFLoader | Collection of Air India PDFs |
+| **1. Document Ingestion** | PyPDFDirectoryLoader | Collection of Air India PDFs |
 | **2. Text Preprocessing** | RecursiveCharacterTextSplitter | Split documents into smaller, meaningful chunks (~15 sentences each) |
 | **3. Embedding Creation** | AWS Bedrock Titan text embedding V2 | Convert chunks into vector representations |
 | **4. Vector Storage** | Chroma DB | Store and index embeddings for fast similarity lookup |
