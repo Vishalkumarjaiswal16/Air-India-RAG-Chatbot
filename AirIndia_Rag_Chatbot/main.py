@@ -9,13 +9,13 @@ from uuid import uuid4
 
 
 # Uncomment for first time to load the documents and create a vector store
-# loader = PyPDFDirectoryLoader("AirIndia", glob="**/*.pdf",)
-# documents = loader.load()
-# print(len(documents))
+loader = PyPDFDirectoryLoader("AirIndia", glob="**/*.pdf",)
+documents = loader.load()
+print(len(documents))   
 
-# text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-# texts = text_splitter.split_documents(documents)
-# print(len(texts))
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+texts = text_splitter.split_documents(documents)
+print(len(texts))
 
 class AmazonTitanEmbedding(Embeddings):
     def __init__(self, region_name="eu-west-3", model_id="amazon.titan-embed-text-v2:0"):
@@ -125,3 +125,4 @@ def get_response(question, chat_history=None):
 if __name__ == "__main__":
     ans = get_response("What is the current status of Air India?")
     print(ans['output']['message']['content'][0]['text'])
+
