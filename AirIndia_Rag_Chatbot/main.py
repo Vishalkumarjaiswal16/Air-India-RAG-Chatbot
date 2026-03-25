@@ -9,13 +9,13 @@ from uuid import uuid4
 
 
 # Uncomment for first time to load the documents and create a vector store
-loader = PyPDFDirectoryLoader("AirIndia", glob="**/*.pdf",)
-documents = loader.load()
+loader = PyPDFDirectoryLoader("AirIndia", glob="**/*.pdf",)  # creating loader object of PyPDFDirectoryLoader class,
+documents = loader.load()  #loader.load() function will read all the PDF files in the specified directory and extract their text content and return a list of Document objects.
 print(len(documents))   
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-texts = text_splitter.split_documents(documents)
-print(len(texts))
+texts = text_splitter.split_documents(documents) # The split_documents() method takes the list of Document objects and splits their text content into smaller chunks based on the specified chunk_size and chunk_overlap parameters. 
+print(len(texts))  
 
 class AmazonTitanEmbedding(Embeddings):
     def __init__(self, region_name="eu-west-3", model_id="amazon.titan-embed-text-v2:0"):
