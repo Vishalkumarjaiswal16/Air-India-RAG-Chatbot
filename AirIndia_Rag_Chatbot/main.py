@@ -14,14 +14,14 @@ documents = loader.load()  #loader.load() function will read all the PDF files i
 print(len(documents))   
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-texts = text_splitter.split_documents(documents) # The split_documents() method takes the list of Document objects and splits their text content into smaller chunks based on the specified chunk_size and chunk_overlap parameters. 
+texts = text_splitter.split_documents(documents) # The split_documents() method splits Document objects's text content into smaller chunks based on the specified chunk_size and chunk_overlap parameters. 
 print(len(texts))  
 
 class AmazonTitanEmbedding(Embeddings):
     def __init__(self, region_name="eu-west-3", model_id="amazon.titan-embed-text-v2:0"):
         self.client = boto3.client("bedrock-runtime", region_name=region_name)
         self.model_id = model_id
-        self.max_tokens = 18000
+        self.max_tokens = 18000 
         self.tokenizer = tiktoken.get_encoding("cl100k_base") # This is the tokenizer used by Amazon Titan models. 
 
     def _safe_truncate(self, text: str) -> str:
@@ -32,8 +32,8 @@ class AmazonTitanEmbedding(Embeddings):
 
     def embed_query(self, text: str) -> list:
         safe_text = self._safe_truncate(text)
-        request = json.dumps({"inputText": safe_text})
-        response = self.client.invoke_model(modelId=self.model_id, body=request)
+        request = json.dumps({"inputText": safe_text}) # Packages the text into a format AWS can understand.
+        response = self.client.invoke_model(modelId=self.model_id, body=request) # Sends the  text to Amazon's AI model (running on AWS Bedrock) and waits for a response.
         return json.loads(response["body"].read())["embedding"]
 
     def embed_documents(self, texts: list[str]) -> list[list[float]]:
@@ -79,7 +79,7 @@ def _format_chat_history(chat_history):
 
 
 def get_response(question, chat_history=None):
-    docs_from_vector_store = vector_store.similarity_search(question, k=3)
+    docs_from_vector_store = vector_store.similarity_search(question, k=3) # we are using vector store retriver 
     conversation_history = _format_chat_history(chat_history)
 
     prompt = f"""
