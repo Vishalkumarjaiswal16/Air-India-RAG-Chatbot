@@ -32,8 +32,8 @@ class AmazonTitanEmbedding(Embeddings):
 
     def embed_query(self, text: str) -> list:
         safe_text = self._safe_truncate(text)
-        request = json.dumps({"inputText": safe_text}) # Packages the text into a format AWS can understand.
-        response = self.client.invoke_model(modelId=self.model_id, body=request) # Sends the  text to Amazon's AI model (running on AWS Bedrock) and waits for a response.
+        request = json.dumps({"inputText": safe_text}) # converts the text into a format AWS can understand.
+        response = self.client.invoke_model(modelId=self.model_id, body=request) 
         return json.loads(response["body"].read())["embedding"]
 
     def embed_documents(self, texts: list[str]) -> list[list[float]]:
@@ -54,7 +54,7 @@ embeddings = AmazonTitanEmbedding()
 vector_store = Chroma(
     collection_name="example_collection",
     embedding_function=embeddings,
-    persist_directory="./chroma_vectorestore",
+    persist_directory="./chroma_vectorestore", # path where the vector store will be saved on disk.
 )
 
 # Uncomment for first time to load the documents and create a vector store
